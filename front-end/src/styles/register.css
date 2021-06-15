@@ -1,9 +1,26 @@
-.background-img {
-  background: url()
+.bgr-img {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url("../images/lion.jpg") no-repeat center bottom fixed; 
+  background-size: cover;
+  z-index: -1;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.856);
+  height: 70vh;
+  width: 45vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 9em;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.container-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
