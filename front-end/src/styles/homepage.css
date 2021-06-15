@@ -1,0 +1,19 @@
+body {
+  background-image: url("../images/tree.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 35%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  /* color: var(--text-color); */
+  font-size: 2em;
+  height: 2em;
+  width: 25em;
+  margin-top: 45vh;
+  padding: .5em;
+}
