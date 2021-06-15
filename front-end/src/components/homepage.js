@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import "../styles/homepage.css"
+import "../styles/homepage.css";
 
 const Homepage = () => {
   const [input, setInput] = useState("");
 
   const handleSubmit = () => {
     console.log(input);
+
   }
 
   return (
-    <div className="container">
+    <div className="container-homepage">
       <form onSubmit={handleSubmit}>
         <input className="search-bar"
         type="text"
