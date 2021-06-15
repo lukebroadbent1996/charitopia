@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './styles/App.css';
 
 import Homepage from "./components/homepage";
+import Register from "./components/register";
 
 const App = () => {
   return (
@@ -29,6 +30,9 @@ const App = () => {
         </div>
 
         <Switch>
+          <Route path="/register">
+            <Register />
+          </Route>
           <Route path="/">
             <Homepage />
           </Route>
