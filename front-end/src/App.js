@@ -36,6 +36,7 @@ const App = () => {
 
           <Route path="/recommended">
             <Recommended/>
+          </Route>
 
           <Route path="/register">
             <Register />
