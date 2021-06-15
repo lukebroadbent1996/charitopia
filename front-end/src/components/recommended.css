@@ -13,29 +13,27 @@
     
 }
 
-.upper_and_lower_boxes .textbox {
+.middle_boxes {
+    padding: 0px 100px;
+}
+
+.textbox {
     position: relative;
     bottom: 200px;
     left: 125px;
 }
 
-.middle_boxes .textbox {
-    position: relative;
-    bottom: 200px;
-    left: 225px;
-}
+
 
 .upper_and_lower_boxes img{
     padding: 0px 100px;
-    width: 300px;
+    width: 500px;
     height: 200px;
-    position: relative;
 }
 
 .middle_boxes img{
-    padding: 0px 200px;
-    width: 300px;
+    padding: 0px 100px;
+    width: 500px;
     height: 200px;
-    position: relative;
 }
 
