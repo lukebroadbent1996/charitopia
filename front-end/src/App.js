@@ -2,8 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './styles/App.css';
 
+
 import Homepage from "./components/homepage";
+import Recommended from "./components/recommended";
 import Register from "./components/register";
+
 
 const App = () => {
   return (
@@ -30,8 +33,13 @@ const App = () => {
         </div>
 
         <Switch>
+
+          <Route path="/recommended">
+            <Recommended/>
+
           <Route path="/register">
             <Register />
+
           </Route>
           <Route path="/">
             <Homepage />
