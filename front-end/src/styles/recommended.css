@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-image: url("https://i1.wp.com/ppphealth4all.de/wp-content/uploads/2020/05/brandi-redd-aJTiW00qqtI-unsplash-scaled-scaled.jpg?fit=2558%2C2380&ssl=1");
+    background-size: cover;
 }
 
 .textbox {
