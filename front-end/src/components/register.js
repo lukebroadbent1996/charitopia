@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import Axios from 'axios';
 
 import "../styles/register.css";
 
@@ -23,6 +24,16 @@ const Register = () => {
 			return <Redirect to="/login"/>
 		}
 	}
+
+  const reg =()=>{
+    Axios.post("http://localhost3001/register", { 
+      fullname: nameInput, 
+      email: emailInput, 
+      password: passwordInput 
+    }).then((response)=>{
+      console.log(response)
+    })
+  }
 
 	return (
     <div className="bgr-img">
