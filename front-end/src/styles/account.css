@@ -1,0 +1,15 @@
+* {
+    background: url("../images/orangutan.jpg") no-repeat center bottom fixed;
+    background-size: cover;
+}
+
+div {
+    text-align: center;
+}
+
+p {
+    margin: auto;
+    width: 200px;
+    background-color: purple;
+    color: aquamarine;
+}

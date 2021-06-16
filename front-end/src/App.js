@@ -6,6 +6,7 @@ import './styles/App.css';
 import Homepage from "./components/homepage";
 import Recommended from "./components/recommended";
 import Register from "./components/register";
+import Account from "./components/account";
 
 
 const App = () => {
@@ -33,18 +34,23 @@ const App = () => {
         </div>
 
         <Switch>
-
+        <Route path="/account">
+            <Account />
+          </Route>
+          
           <Route path="/recommended">
-            <Recommended/>
+            <Recommended />
           </Route>
 
           <Route path="/register">
             <Register />
-
           </Route>
+
           <Route path="/">
             <Homepage />
           </Route>
+
+
         </Switch>
       </Router>
     </div>
