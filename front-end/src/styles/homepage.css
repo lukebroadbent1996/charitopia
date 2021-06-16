@@ -6,7 +6,7 @@
   top: 0;
   z-index: -1;
   justify-content: center;
-  background: url("https://live.staticflickr.com/4103/4960313193_0eb1232316_k.jpg") no-repeat center bottom fixed; 
+  background: url("../images/tree.jpg") no-repeat center bottom fixed; 
   background-size: cover;
 }
 
