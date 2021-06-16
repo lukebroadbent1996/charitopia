@@ -1,4 +1,4 @@
-.bgr-img {
+.bgr-img-reg {
   position: absolute;
   top: 0;
   height: 100%;
@@ -8,7 +8,7 @@
   z-index: -1;
 }
 
-.container {
+.container-reg {
   display: flex;
   flex-direction: column;
   height: 70vh;
@@ -21,12 +21,12 @@
   color: var(--text-color);
 }
 
-.container > h1 {
+.container-reg > h1 {
   font-size: 3em;
   margin-bottom: calc(30% / 2);
 }
 
-.container-form {
+.container-form-reg {
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -34,7 +34,7 @@
   align-items: center;
 }
 
-.bar {
+.bar-reg {
   height: 2em;
   width: 60%;
   font-size: 1.3em;
@@ -46,11 +46,11 @@
   margin-top: auto;
 }
 
-.bar:focus {
+.bar-reg:focus {
   outline: none;
 }
 
-.form-button {
+.form-button-reg {
   width: max-content;
   font-size: 1.2em;
 }
@@ -70,43 +70,43 @@
 }
 
 @media screen and (max-width: 1553px) {
-  .bar {
+  .bar-reg {
     font-size: 1em;
   }
 
-  .container {
+  .container-reg {
     padding: 0em 0em;
   }
 }
 
 @media only screen and (max-width: 813px) {
-  .bgr-img {
+  .bgr-img-reg {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .container > h1 {
+  .container-reg > h1 {
     font-size: 2em;
     margin-bottom: 40%;
   }
 
-  .container {
+  .container-reg {
     width: 60vw;
     padding: 0em 0em;
     margin: 0em;
   }
 
-  .bar {
+  .bar-reg {
     width: 80%;
     font-size: .7em;
   }
 
-  .form-button {
+  .form-button-reg {
     font-size: .9em;
   }
 
-  .container > p {
+  .container-reg > p {
     font-size: 0.7em;
   }
 
@@ -116,18 +116,18 @@
 }
 
 @media only screen and (max-width: 813px) and (max-height: 850px) {
-  .container h1 {
+  .container-reg h1 {
     margin-bottom: 20%;
   }
 }
 
 @media only screen and (max-height: 420px) {
-  .container-form {
+  .container-form-reg {
     height: 100%;
     gap: 0em;
   }
 
-  .container h1 {
+  .container-reg h1 {
     margin-bottom: 0em;
   }
 }
