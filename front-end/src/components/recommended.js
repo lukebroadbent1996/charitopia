@@ -1,12 +1,14 @@
 import './recommended.css';
 import React from 'react';
 
+
+
 const Recommended = () => {
     class Charity {
-        constructor(name, description, ranking, image) {
+        constructor(name, description, rating, image) {
             this.name = name;
             this.description = description;
-            this.ranking = ranking;
+            this.rating = rating;
             this.image = image;
         }
     }
@@ -28,6 +30,24 @@ const Recommended = () => {
     
     const charities = [charity1, charity2, charity3, charity4, charity5, charity6, charity7, charity8]
     
+    const star_rating = (rating) => {
+        if (rating === 1) {
+            return(<p>&#9734;</p>)
+        };
+        if (rating === 2) {
+            return(<p>&#9734; &#9734;</p>)
+        }
+        if (rating === 3) {
+            return(<p>&#9734; &#9734; &#9734;</p>)
+        }
+        if (rating === 4) {
+            return(<p>&#9734; &#9734; &#9734; &#9734;</p>)
+        }
+        if (rating === 5) {
+            return(<p>&#9734; &#9734; &#9734; &#9734; &#9734;</p>)
+        }
+    };
+
     return(
         <div className="recommend_layout">
             <div className="upper_and_lower_boxes">
@@ -35,7 +55,7 @@ const Recommended = () => {
                 <div className="textbox">
                     <p>{charity1.name}</p>
                     <p>{charity1.description}</p>
-                    <p>star rating?</p>
+                    <p>{star_rating(charity1.rating)}</p>
                 </div>
             </div>
             <div className="upper_and_lower_boxes">
@@ -43,7 +63,7 @@ const Recommended = () => {
                 <div className="textbox">
                     <p>{charity2.name}</p>
                     <p>{charity2.description}</p>
-                    <p>star rating?</p>
+                    <p>{star_rating(charity2.rating)}</p>
                 </div>
             </div>
             <div className="upper_and_lower_boxes">
@@ -51,48 +71,48 @@ const Recommended = () => {
                 <div className="textbox">
                     <p>{charity3.name}</p>
                     <p>{charity3.description}</p>
-                    <p>star rating?</p>
+                    <p>{star_rating(charity3.rating)}</p>
                 </div>
             </div>
             <div className="middle_boxes">
-                <img src="" />
+            <img src={charity4.image} />
                 <div className="textbox">
-                    <p>name of charity</p>
-                    <p>description of charity</p>
-                    <p>star rating?</p>
+                    <p>{charity4.name}</p>
+                    <p>{charity4.description}</p>
+                    <p>{star_rating(charity4.rating)}</p>
                 </div>
             </div>
             <div className="middle_boxes">
-                <img src="" />
+            <img src={charity5.image} />
                 <div className="textbox">
-                    <p>name of charity</p>
-                    <p>description of charity</p>
-                    <p>star rating?</p>
+                    <p>{charity5.name}</p>
+                    <p>{charity5.description}</p>
+                    <p>{star_rating(charity5.rating)}</p>
                 </div>
             </div>
             
             <div className="upper_and_lower_boxes">
-                <img src="" />
+            <img src={charity6.image} />
                 <div className="textbox">
-                    <p>name of charity</p>
-                    <p>description of charity</p>
-                    <p>star rating?</p>
+                    <p>{charity6.name}</p>
+                    <p>{charity6.description}</p>
+                    <p>{star_rating(charity6.rating)}</p>
                 </div>
             </div>
             <div className="upper_and_lower_boxes">
-                <img src="" />
+            <img src={charity7.image} />
                 <div className="textbox">
-                    <p>name of charity</p>
-                    <p>description of charity</p>
-                    <p>star rating?</p>
+                    <p>{charity7.name}</p>
+                    <p>{charity7.description}</p>
+                    <p>{star_rating(charity7.rating)}</p>
                 </div>
             </div>
             <div className="upper_and_lower_boxes">
-                <img src="" />
+            <img src={charity8.image} />
                 <div className="textbox">
-                    <p>name of charity</p>
-                    <p>description of charity</p>
-                    <p>star rating?</p>
+                    <p>{charity8.name}</p>
+                    <p>{charity8.description}</p>
+                    <p>{star_rating(charity8.rating)}</p>
                 </div>
             </div>
         </div>
