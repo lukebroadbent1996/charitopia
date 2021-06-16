@@ -65,6 +65,14 @@ app.post('/register', (req, res)=>{
 
 })
 
+app.get('/login', (req, res)=>{
+    if (req.session.user){
+        res.send({ loggedIn: true, user: req.session.user })
+    }else{
+        res.send({ loggedIn: false })
+    }
+})
+
 app.post('/login', (req, res)=>{
 
   const email = req.body.email
@@ -81,6 +89,8 @@ app.post('/login', (req, res)=>{
             if (results.length > 0){
                 bcrypt.compare(password, results[0].password, (error, response)=>{
                     if (response){
+                        req.session.user = results
+                        console.log(req.session.user)
                         res.send(results)
                     }else{
                         res.send({message: "Wrong email/password combination"})

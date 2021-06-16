@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import Axios from 'axios';
 
@@ -25,6 +25,8 @@ const Register = () => {
 		}
 	}
 
+  Axios.defaults.withCredentials = true
+
   const reg =()=>{
     Axios.post("http://localhost3001/register", { 
       fullname: nameInput, 
@@ -34,6 +36,19 @@ const Register = () => {
       console.log(response)
     })
   }
+
+  // const login =()=>{
+  //   Axios.post("http://localhost:3001/login", {
+  //     email
+  //   })
+  // }
+
+  //check user is logged in 
+  useEffect(()=>{
+    Axios.get("http://localhost:3001/login").then((response)=>{
+      console.log(response)
+    })
+  }, [])
 
 	return (
     <div className="bgr-img">
