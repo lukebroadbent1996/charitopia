@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-image: url("https://i1.wp.com/ppphealth4all.de/wp-content/uploads/2020/05/brandi-redd-aJTiW00qqtI-unsplash-scaled-scaled.jpg?fit=2558%2C2380&ssl=1");
+    background-size: cover;
 }
 
 .textbox {
@@ -10,20 +12,23 @@
     width: 250px;
     height: 150px;
     text-align: center;
+    position: relative;
+    bottom: 200px;
+    left: 125px;
     
 }
 
 .middle_boxes {
+    margin: 30px 0px;
     padding: 0px 100px;
+    width: 50%;
+    height: 200px;
 }
 
-.textbox {
-    position: relative;
-    bottom: 200px;
-    left: 125px;
+.upper_and_lower_boxes {
+    width: 33%;
+    height: 200px;
 }
-
-
 
 .upper_and_lower_boxes img{
     padding: 0px 100px;
