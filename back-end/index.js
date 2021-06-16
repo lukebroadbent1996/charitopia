@@ -2,6 +2,8 @@ const express = require('express')
 const mysql = require('mysql')
 const app = express()
 
+app.use(express.json())
+
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -9,15 +11,44 @@ const db = mysql.createConnection({
     database: 'charitopia'
 })
 
-app.get('/register', (req, res)=>{
+app.post('/register', (req, res)=>{
+
+  const fullname = req.body.fullname
+  const email = req.body.email
+  const password = req.body.password
 
     db.query(
-        "INSERT INTO user-db (full-name, email, password, phone-num) VALUES (?,?,?,?)", 
-        [fullname, email, password, phonenumber], 
+        "INSERT INTO userdb (name, email, password) VALUES (?,?,?)", 
+        [fullname, email, password], 
         (err, results)=>{
-            console.log(err)
+            if (err){
+                res.status(500).json({err})
+            }else{
+                res.status(201).json({results})
+            }
     })
 
+})
+
+app.post('/login', (req, res)=>{
+
+  const email = req.body.email
+  const password = req.body.password
+
+    db.query(
+        "SELECT * FROM userdb WHERE email = ? AND password = ?", 
+        [email, password], 
+        (err, results)=>{
+            if (err){
+                res.status(500).json({err})
+            }
+            
+            if (results){
+                res.send(results)
+            }else{
+                res.send({message: "Wrong email/password combination"})
+            }
+    })
 })
 
 app.listen(3001, ()=>{
