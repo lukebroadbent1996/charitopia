@@ -7,6 +7,8 @@ import Homepage from "./components/homepage";
 import Recommended from "./components/recommended";
 import Register from "./components/register";
 import Account from "./components/account";
+import Login from "./components/login";
+
 
 
 const App = () => {
@@ -40,6 +42,10 @@ const App = () => {
           
           <Route path="/recommended">
             <Recommended />
+          </Route>
+
+          <Route path="/login">
+            <Login />
           </Route>
 
           <Route path="/register">
