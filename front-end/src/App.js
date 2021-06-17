@@ -19,28 +19,30 @@ const StyledWrapper = styled.div`
 const App = () => {
   const [randomImg, setRandomImg] = useState("");
   const [randomImgSrc, setRandomImgSrc] = useState("");
+  const [changed, setChanged] = useState(false);
+
+  const getRandomImg = () => {  
+    const importAll = (r) => {
+      let images = {};
+      r.keys().forEach((keys) => { images[keys.replace("./", "")] = r(keys) });
+      return images;
+    }
+    const images = importAll(require.context("./images/", false, /\.jpg$/));
+    const imgArr = Object.keys(images);
+
+    let num = Math.floor(Math.random() * imgArr.length);
+
+    let newRandomImg = imgArr[num];
+    let newRandomImgSrc = Object.entries(images)[num][1].default;
+    setRandomImg(newRandomImg);
+    setRandomImgSrc(newRandomImgSrc);
+    setChanged(false);
+  }
 
   useEffect(() => {
-    const getRandomImg = () => {  
-      const importAll = (r) => {
-        let images = {};
-        r.keys().forEach((keys) => { images[keys.replace("./", "")] = r(keys) });
-        return images;
-      }
-      const images = importAll(require.context("./images/", false, /\.jpg$/));
-      const imgArr = Object.keys(images);
-
-      let num = Math.floor(Math.random() * imgArr.length);
-  
-      let newRandomImg = imgArr[num];
-      let newRandomImgSrc = Object.entries(images)[num][1].default;
-      setRandomImg(newRandomImg);
-      setRandomImgSrc(newRandomImgSrc);
-    }
-
     getRandomImg()
-  }, []);
-  
+  }, [changed]);
+
   return (
     <div className="App">
       <StyledWrapper img={randomImgSrc}>
@@ -48,19 +50,19 @@ const App = () => {
           <div className="navbar">
             <ul>
               <li>
-                <Link to="/" className="navbar-item">Search</Link>
+                <Link to="/" className="navbar-item" onClick={() => setChanged(true)}>Search</Link>
               </li>
               <li>
-                <Link to="/recommended" className="navbar-item" >Recommended</Link>
+                <Link to="/recommended" className="navbar-item" onClick={() => setChanged(true)}>Recommended</Link>
               </li>
               <li>
-                <Link to="/account" className="navbar-item">Account</Link>
+                <Link to="/account" className="navbar-item" onClick={() => setChanged(true)}>Account</Link>
               </li> 
               <li>
-                <Link to="/login" className="navbar-item">Login</Link>
+                <Link to="/login" className="navbar-item" onClick={() => setChanged(true)}>Login</Link>
               </li>
               <li>
-                <Link to="/register" className="navbar-item">Register</Link>
+                <Link to="/register" className="navbar-item" onClick={() => setChanged(true)}>Register</Link>
               </li>
             </ul>
           </div>
@@ -81,12 +83,9 @@ const App = () => {
             <Route path="/register">
               <Register />
             </Route>
-
             <Route path="/">
               <Homepage />
             </Route>
-
-
           </Switch>
         </Router>
       </StyledWrapper>
