@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import Axios from 'axios';
 
 import "../styles/login.css";
 
@@ -8,6 +9,8 @@ const Login = ({ setUser }) => {
 	const [passwordInput, setPasswordInput] = useState("");
 	const [error, setError] = useState("");
 	const [redirect, setRedirect] = useState(false);
+
+	const[loginStatus, setLoginStatus] = useState("")
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -22,10 +25,35 @@ const Login = ({ setUser }) => {
 		}
 	}
 
+	Axios.defaults.withCredentials = true
+	const login = () => {
+		Axios.post("http://localhost:3001/login", {  
+		  email: emailInput, 
+		  password: passwordInput 
+		}).then((response)=>{
+
+			if (response.data.message){
+				setLoginStatus(response.data.message)
+			}else{
+				setLoginStatus(response.data[0].name)
+			}
+		 
+		})
+	  }
+
+  //check user is logged in 
+  useEffect(()=>{
+    Axios.get("http://localhost:3001/login").then((response)=>{
+		if(response.data.loggedIn == true ){
+      setLoginStatus(response.data.user[0].name)
+	}})
+  }, [])
+
 	return (
 		<div className="bgr-img-log">
 			<div className="container-log">
 				<h1>Login</h1>
+				<p>{loginStatus}</p>
 				<form onSubmit={handleSubmit} className="container-form-log">
 					<input type="text"
 						name="email"
@@ -39,7 +67,7 @@ const Login = ({ setUser }) => {
 						className="bar-log"
 						value={passwordInput}
 						onChange={(e) => { setPasswordInput(e.target.value) }} />
-					<input type="submit" name="submit" className="form-button-log" value="Submit" />
+					<input type="submit" name="submit" className="form-button-log" value="Submit" onClick={login} />
 				</form>
 				{display()}
 				<p className="register-text">Don't have an account yet: <Link to="/register" className="link-text">Register here!</Link></p>

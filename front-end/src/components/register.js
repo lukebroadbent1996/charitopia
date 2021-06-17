@@ -27,9 +27,9 @@ const Register = () => {
 
   Axios.defaults.withCredentials = true
 
-  const reg =()=>{
-    Axios.post("http://localhost3001/register", { 
-      fullname: nameInput, 
+  const reg = () => {
+    Axios.post("http://localhost:3001/register", { 
+      name: nameInput, 
       email: emailInput, 
       password: passwordInput 
     }).then((response)=>{
@@ -37,18 +37,7 @@ const Register = () => {
     })
   }
 
-  // const login =()=>{
-  //   Axios.post("http://localhost:3001/login", {
-  //     email
-  //   })
-  // }
-
-  //check user is logged in 
-  useEffect(()=>{
-    Axios.get("http://localhost:3001/login").then((response)=>{
-      console.log(response)
-    })
-  }, [])
+  
 
 	return (
     <div className="bgr-img-reg">
@@ -79,7 +68,7 @@ const Register = () => {
             className="bar-reg"
             value={passwordMatch}
             onChange={(e) => { setPasswordMatch(e.target.value) }} />
-          <input type="submit" name="submit" className="form-button-reg" value="Submit" />
+          <input type="submit" name="submit" className="form-button-reg" value="Submit" onClick={reg}/>
         </form>
         {display()}
         <p className="login-text">Already have an account: <Link to="/login" className="link-text">Login here!</Link></p>

@@ -3,8 +3,9 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const mysql = require('mysql');
 const cors = require('cors');
-
 const router = express.Router();
+
+router.use(express.json());
 
 require('dotenv').config()
 

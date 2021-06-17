@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const router = express.Router();
 const cors = require('cors');
-
 require('dotenv').config()
 
 router.use(cors({
