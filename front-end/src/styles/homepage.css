@@ -1,13 +1,8 @@
 .container-homepage {
   display: flex;
-  height: 100%;
+  height: auto;
   width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: -1;
   justify-content: center;
-  background: url("../images/tree.jpg") no-repeat center bottom fixed; 
-  background-size: cover;
 }
 
 .search-bar {
