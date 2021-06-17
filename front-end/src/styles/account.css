@@ -1,17 +1,18 @@
-* {
+
+#account_page_background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    text-align: center;
     background: url("../images/orangutan.jpg") no-repeat center bottom fixed;
     background-size: cover;
     /* Photo by <a href="https://unsplash.com/@themediahub101?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">lip hui</a> on <a href="https://unsplash.com/s/photos/orangutan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
    */
 }
 
-div {
-    text-align: center;
-}
-
 p {
     margin: auto;
-    width: 200px;
+    width: 300px;
     background-color: purple;
     color: aquamarine;
 }
