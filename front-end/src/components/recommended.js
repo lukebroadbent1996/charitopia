@@ -1,8 +1,6 @@
 import '../styles/recommended.css';
 import React from 'react';
 
-import getRecommended from "../utils/index.js"
-
 const Recommended = () => {
     class Charity {
         constructor(name, description, rating, image) {
