@@ -7,10 +7,12 @@ const cors = require('cors')
 
 const register = require("./routes/registerRouter");
 const login = require("./routes/loginRouter")
+const api = require('./routes/api')
 
 require('dotenv').config()
 
 const app = express();
+app.set('trust proxy', 1);
 
 app.use(express.json());
 app.use(cors({
@@ -36,6 +38,8 @@ app.use(session({
 
 app.use( register);
 app.use( login);
+app.use('/api', api)
+
 
 app.listen(3001, ()=>{
     console.log('Server running on port 3001')
