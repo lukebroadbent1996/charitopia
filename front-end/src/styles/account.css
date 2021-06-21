@@ -1,18 +1,15 @@
-
 #account_page_background {
+    margin-top: 5em;
+    margin-left: 40em;
     position: fixed;
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: 30%;
     text-align: center;
-    background: url("../images/orangutan.jpg") no-repeat center bottom fixed;
-    background-size: cover;
-    /* Photo by <a href="https://unsplash.com/@themediahub101?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">lip hui</a> on <a href="https://unsplash.com/s/photos/orangutan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-   */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .account_text {
     margin: auto;
-    width: 300px;
-    background-color: purple;
-    color: aquamarine;
+    font-size: 1.5em;
+    color: var(--text-color);
 }
