@@ -10,6 +10,7 @@ import Account from "./components/account";
 import Login from "./components/login";
 
 const StyledWrapper = styled.div`
+  display: flex; 
   min-height: 100vh;
   width: 100vw;
   background: url(${props => props.img}) no-repeat center bottom fixed;

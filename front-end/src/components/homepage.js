@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { BiSearchAlt2 as SearchSymbol } from "react-icons/bi";
 import "../styles/homepage.css";
 
 import animals from "../utils/animals.json";
@@ -6,7 +8,9 @@ import animals from "../utils/animals.json";
 const Homepage = () => {
   const [input, setInput] = useState("");
   const [display, setDisplay] = useState(false);
+  const [api, setApi] = useState({});
   const wrapperRef = useRef(null);
+
 
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
@@ -22,12 +26,15 @@ const Homepage = () => {
     }
   }
 
-  const handleSubmit = () => {
-    console.log(input);
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get("http://localhost:3001/api");
+      setApi(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
-
-  
 
   return (
     <div className="container-homepage">
@@ -56,6 +63,7 @@ const Homepage = () => {
               })}
             </div>
           )}
+          <button type="submit" className="submit-button"><SearchSymbol color="rgb(134, 134, 134)" size="3em" /></button>
         </div>
       </form>
     </div>

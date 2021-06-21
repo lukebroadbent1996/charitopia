@@ -22,7 +22,7 @@ const speedLimiter = slowDown({
   
 });
 
-const baseURL = `https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}`
+const baseURL = `https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&search=Animals`
 
 let cachedData;
 let cachedTime;
