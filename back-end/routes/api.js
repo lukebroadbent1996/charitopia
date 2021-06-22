@@ -4,9 +4,6 @@ const axios = require('axios')
 const rateLimit = require('express-rate-limit')
 const slowDown = require('express-slow-down')
 
-const getApi = require('./apifetch')
-
-
 //limits the amount of hits a ip can request
 const limiter = rateLimit({
     windowMs: 30 * 1000, // 30 seconds
@@ -26,24 +23,51 @@ const speedLimiter = slowDown({
 let cachedData;
 let cachedTime;
 
+let baseURL = `https://api.data.charitynavigator.org/v2/Organizations?`
+
 router.post('/', limiter, speedLimiter, async (req, res)=>{
-  
   // in memory cache so refreshing wont count as a hit
     if (cachedTime && cachedTime > Date.now() - 30 * 1000){
         return res.json(cachedData);
     }
    try{
     let search = req.body.search
-    const data = await getApi(search);
+    const param1 = new URLSearchParams({
+      app_id: process.env.API_ID,
+      app_key: process.env.API_KEY,
+      search: `${search}`,
+      categoryID: 1
+  
+    })
+    const param2 = new URLSearchParams({
+      app_id: process.env.API_ID,
+      app_key: process.env.API_KEY,
+      search: 'Animals',
+      rated: true,
+      sort: 'RATING%3ADESC'
+    })
 
-    cachedData = data
-    cachedTime = Date.now()
-    data.cachedTime = cachedTime
-    console.log(cachedTime)
-    return res.json(data)
+
+    if (req.body.search){
+      const { data }= await axios.get(`${baseURL}${param1}`)
+      cachedData = data
+      cachedTime = Date.now()
+      data.cachedTime = cachedTime
+      console.log(cachedTime)
+      return res.json(data)
+      
+    }else if(!req.body.search){
+      const { data }= await axios.get(`${baseURL}${param2}`)
+      cachedData = data
+      cachedTime = Date.now()
+      data.cachedTime = cachedTime
+      console.log(cachedTime)
+      return res.json(data)
+    }
     
    }catch (err) {
     console.log(err)
+    console.log("big broke")
    }
 
 })

@@ -29,8 +29,8 @@ const Homepage = ({ setData, data }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api", {"search": input});
-      setData(response.data);
+      const response = await axios.post("http://localhost:3001/api", { "search": input});
+      setApi(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -44,6 +44,7 @@ const Homepage = ({ setData, data }) => {
         <div className="pos-rel">
           <input className="search-bar"
           type="text"
+          name='search'
           placeholder="search"
           value={input}
           onChange={(e) => setInput(e.target.value)}
