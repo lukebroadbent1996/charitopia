@@ -1,6 +1,7 @@
 .container-reg {
   display: flex;
   flex-direction: column;
+  position: relative;
   height: 70vh;
   width: 45vw;
   background-color: rgba(0, 0, 0, 0.5);
@@ -40,21 +41,29 @@
 .bar-reg:focus {
   outline: none;
   border-radius: 1em;
-  border: 2px solid rgb(134, 134, 134);
+  box-shadow: 0 0 0 1pt rgb(202, 202, 202);
+}
+
+.password-error {
+  position: absolute;
+  right: 4em;
+  bottom: 12em;
 }
 
 .form-button-reg {
   width: 6em;
   font-size: 1.2em;
   padding: .3em;
-  border: 1px solid rgb(255, 255, 255);
+  border: none;
   border-radius: 1em;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.445);
   color: var(--text-color);
 }
 
 .form-button-reg:hover {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 1pt rgb(202, 202, 202);
+  border-radius: 1em;
 }
 
 .link-text:link {

@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
 `
 
 const App = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
   const [randomImg, setRandomImg] = useState("");
   const [randomImgSrc, setRandomImgSrc] = useState("");
   const [changed, setChanged] = useState(false);
@@ -60,21 +60,28 @@ const App = () => {
               <li>
                 <Link to="/recommended" className="navbar-item" onClick={() => setChanged(true)}>Recommended</Link>
               </li>
-              <li>
-                <Link to="/account" className="navbar-item" onClick={() => setChanged(true)}>Account</Link>
-              </li> 
-              <li>
-                <Link to="/login" className="navbar-item" onClick={() => setChanged(true)}>Login</Link>
-              </li>
-              <li>
-                <Link to="/register" className="navbar-item" onClick={() => setChanged(true)}>Register</Link>
-              </li>
+              {user ?
+                <>
+                  <li>
+                    <Link to="/account" className="navbar-item" onClick={() => setChanged(true)}>Account</Link>
+                  </li> 
+
+                </>
+              : 
+                <>
+                  <li>
+                    <Link to="/login" className="navbar-item" onClick={() => setChanged(true)}>Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/register" className="navbar-item" onClick={() => setChanged(true)}>Register</Link>
+                  </li>
+                </>}
             </ul>
           </div>
 
           <Switch>
             <Route path="/account">
-              <Account user={user} />
+              <Account user={user} setUser={setUser} />
             </Route>
             <Route path="/recommended">
               <Recommended />

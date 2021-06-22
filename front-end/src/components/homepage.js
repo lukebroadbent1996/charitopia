@@ -8,7 +8,7 @@ import animals from "../utils/animals.json";
 const Homepage = () => {
   const [input, setInput] = useState("");
   const [display, setDisplay] = useState(false);
-  const [api, setApi] = useState({});
+  const [api, setApi] = useState([]);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -28,16 +28,18 @@ const Homepage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:3001/api");
+      const response = await axios.post("http://localhost:3001/api", {"search": input});
       setApi(response.data);
     } catch (error) {
       console.error(error);
     }
   }
 
+  console.log(api)
+
   return (
     <div className="container-homepage">
-      <form action='/api' method='POST' onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off">
         <div className="pos-rel">
           <input className="search-bar"
           type="text"
