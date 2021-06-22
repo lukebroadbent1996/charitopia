@@ -11,7 +11,6 @@ const Homepage = () => {
   const [api, setApi] = useState({});
   const wrapperRef = useRef(null);
 
-
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
     return () => {

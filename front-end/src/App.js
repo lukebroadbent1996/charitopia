@@ -18,16 +18,20 @@ const StyledWrapper = styled.div`
 `
 
 const App = () => {
+  const [user, setUser] = useState({});
   const [randomImg, setRandomImg] = useState("");
   const [randomImgSrc, setRandomImgSrc] = useState("");
   const [changed, setChanged] = useState(false);
 
-  const getRandomImg = () => {  
+  const getRandomImg = () => { 
+    //gets all the images from the folder images and puts them into an object as a key value pair. 
+    //key = file name (./ removed from it) value = image path from built.
     const importAll = (r) => {
       let images = {};
       r.keys().forEach((keys) => { images[keys.replace("./", "")] = r(keys) });
       return images;
     }
+    //require.context is from webpack. It allows you to search from folders that are publically avaible with regEx to filter.
     const images = importAll(require.context("./images/", false, /\.jpg$/));
     const imgArr = Object.keys(images);
 
@@ -70,13 +74,13 @@ const App = () => {
 
           <Switch>
             <Route path="/account">
-              <Account />
+              <Account user={user} />
             </Route>
             <Route path="/recommended">
               <Recommended />
             </Route>
             <Route path="/login">
-              <Login />
+              <Login setUser={setUser} />
             </Route>
             <Route path="/register">
               <Register />
