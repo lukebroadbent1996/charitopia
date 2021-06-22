@@ -37,7 +37,7 @@ const Homepage = () => {
 
   return (
     <div className="container-homepage">
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form action='/api' method='POST' onSubmit={handleSubmit} autoComplete="off">
         <div className="pos-rel">
           <input className="search-bar"
           type="text"
