@@ -17,8 +17,6 @@ const BackgroundImg = ( setRandomImg, setRandomImgSrc ) => {
   
       let newRandomImg = imgArr[num];
       let newRandomImgSrc = Object.entries(images)[num][1].default;
-      // console.log(newRandomImg);
-      // console.log(newRandomImgSrc);
       setRandomImg(newRandomImg);
       setRandomImgSrc(newRandomImgSrc);
     }
