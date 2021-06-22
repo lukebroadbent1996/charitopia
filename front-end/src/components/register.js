@@ -14,7 +14,23 @@ const Register = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+    setError("");
 		const submitted = { name: nameInput, email: emailInput, password: passwordInput };
+    Axios.defaults.withCredentials = true;
+
+    try {
+      const response = await Axios.post("http://localhost:3001/register", submitted);
+      console.log(response);
+    } catch (Error) {
+      setError("Account already exists!");
+      console.log(Error);
+    }
+
+    setNameInput("");
+		setEmailInput("");
+		setPasswordInput("");
+		setPasswordMatch("");
+    setRedirect(true);
 	}
 
 	const display = () => {
@@ -24,20 +40,6 @@ const Register = () => {
 			return <Redirect to="/login"/>
 		}
 	}
-
-  Axios.defaults.withCredentials = true
-
-  const reg = () => {
-    Axios.post("http://localhost:3001/register", { 
-      name: nameInput, 
-      email: emailInput, 
-      password: passwordInput 
-    }).then((response)=>{
-      console.log(response)
-    })
-  }
-
-  
 
 	return (
     <div className="container-reg">
@@ -67,7 +69,7 @@ const Register = () => {
           className="bar-reg"
           value={passwordMatch}
           onChange={(e) => { setPasswordMatch(e.target.value) }} />
-        <input type="submit" name="submit" className="form-button-reg" value="Submit" onClick={reg}/>
+        <input type="submit" name="submit" className="form-button-reg" value="Submit" />
       </form>
       {display()}
       <p className="login-text">Already have an account: <Link to="/login" className="link-text">Login here!</Link></p>
