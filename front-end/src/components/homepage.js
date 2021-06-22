@@ -8,7 +8,7 @@ import animals from "../utils/animals.json";
 const Homepage = () => {
   const [input, setInput] = useState("");
   const [display, setDisplay] = useState(false);
-  const [api, setApi] = useState({});
+  const [api, setApi] = useState([]);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -34,6 +34,8 @@ const Homepage = () => {
       console.error(error);
     }
   }
+
+  console.log(api)
 
   return (
     <div className="container-homepage">
