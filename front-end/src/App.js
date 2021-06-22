@@ -10,7 +10,8 @@ import Account from "./components/account";
 import Login from "./components/login";
 
 const StyledWrapper = styled.div`
-  height: 100vh;
+  display: flex; 
+  min-height: 100vh;
   width: 100vw;
   background: url(${props => props.img}) no-repeat center bottom fixed;
   background-size: cover;
@@ -68,18 +69,15 @@ const App = () => {
           </div>
 
           <Switch>
-          <Route path="/account">
+            <Route path="/account">
               <Account />
             </Route>
-            
             <Route path="/recommended">
               <Recommended />
             </Route>
-
             <Route path="/login">
               <Login />
             </Route>
-
             <Route path="/register">
               <Register />
             </Route>

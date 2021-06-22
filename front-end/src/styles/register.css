@@ -5,9 +5,10 @@
   width: 45vw;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 1em;
-  margin: 9em;
   padding: .5em 8em;
   align-items: center;
+  margin-top: 9em;
+  margin-left: 9em;
   color: var(--text-color);
 }
 
@@ -38,11 +39,22 @@
 
 .bar-reg:focus {
   outline: none;
+  border-radius: 1em;
+  border: 2px solid rgb(134, 134, 134);
 }
 
 .form-button-reg {
-  width: max-content;
+  width: 6em;
   font-size: 1.2em;
+  padding: .3em;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.form-button-reg:hover {
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .link-text:link {
@@ -70,12 +82,6 @@
 }
 
 @media only screen and (max-width: 813px) {
-  .bgr-img-reg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .container-reg > h1 {
     font-size: 2em;
     margin-bottom: 40%;
@@ -84,7 +90,8 @@
   .container-reg {
     width: 60vw;
     padding: 0em 0em;
-    margin: 0em;
+    margin: 4.5em;
+    place-self: center;
   }
 
   .bar-reg {

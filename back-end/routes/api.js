@@ -23,7 +23,6 @@ const speedLimiter = slowDown({
   
 });
 
-
 let cachedData;
 let cachedTime;
 
