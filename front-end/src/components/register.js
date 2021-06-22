@@ -11,27 +11,37 @@ const Register = () => {
 	const [passwordMatch, setPasswordMatch] = useState("");
 	const [redirect, setRedirect] = useState(false);
 	const [error, setError] = useState("");
+	const [passwordError, setPasswordError] = useState("");
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
     setError("");
+    if (!nameInput || !emailInput || !passwordInput) return
+    if (passwordInput !== passwordMatch) return
 		const submitted = { name: nameInput, email: emailInput, password: passwordInput };
     Axios.defaults.withCredentials = true;
 
     try {
       const response = await Axios.post("http://localhost:3001/register", submitted);
-      console.log(response);
+
+      setNameInput("");
+      setEmailInput("");
+      setPasswordInput("");
+      setPasswordMatch("");
+      setRedirect(true);
     } catch (Error) {
       setError("Account already exists!");
-      console.log(Error);
     }
-
-    setNameInput("");
-		setEmailInput("");
-		setPasswordInput("");
-		setPasswordMatch("");
-    setRedirect(true);
 	}
+
+  useEffect(() => {
+    if (!passwordMatch) return setPasswordError("");
+    if (passwordInput !== passwordMatch) {
+      setPasswordError("passwords don't match!");
+    } else {
+      setPasswordError("");
+    }
+  }, [passwordMatch])
 
 	const display = () => {
 		if (error) {
@@ -69,6 +79,7 @@ const Register = () => {
           className="bar-reg"
           value={passwordMatch}
           onChange={(e) => { setPasswordMatch(e.target.value) }} />
+        {passwordError && <p className="password-error">{passwordError}</p>}
         <input type="submit" name="submit" className="form-button-reg" value="Submit" />
       </form>
       {display()}

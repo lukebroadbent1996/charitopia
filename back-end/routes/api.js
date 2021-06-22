@@ -34,7 +34,7 @@ router.post('/', limiter, speedLimiter, async (req, res)=>{
     }
    try{
     let search = req.body.search
-    const { data } = await axios.get(getApi(search));
+    const data = await getApi(search);
 
     cachedData = data
     cachedTime = Date.now()
