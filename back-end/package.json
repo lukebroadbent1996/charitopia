@@ -25,6 +25,7 @@
     "express-session": "^1.17.2",
     "express-slow-down": "^1.4.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "tedious": "^11.0.9"
   }
 }
