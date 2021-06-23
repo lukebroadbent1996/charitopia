@@ -27,6 +27,15 @@ const Homepage = ({ setData, data }) => {
   }
 
   const handleSubmit = async (e) => {
+<<<<<<< HEAD
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3001/api", { "search": input});
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+=======
     // e.preventDefault();
     // try {
     //   const response = await axios.post("http://localhost:3001/api", { "search": input});
@@ -34,6 +43,7 @@ const Homepage = ({ setData, data }) => {
     // } catch (error) {
     //   console.error(error);
     // }
+>>>>>>> 68f6a37caff91f6f458f8a0838a6da8eca8f5260
   }
 
   if (data[0]) return <Redirect to="/search"/>
