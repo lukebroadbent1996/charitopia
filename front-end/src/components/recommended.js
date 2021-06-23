@@ -23,20 +23,13 @@ const star_rating = (rating) => {
     }
 };
 
-const Recommended = () => {
-    let [api, setApi] = useState([]);
-
-    useEffect(() => {
-        const handleFetch = async () => {
-            const response = await fetch (`https://api.data.charitynavigator.org/v2/Organizations?app_id=42522c52&app_key=b7069e568f80ed5b08a1857d797719f4&search=Animals&rated=true&sort=RATING%3ADESC`)
-            const data = await response.json();
-            setApi(data);
-        }
-
-        handleFetch();
-    }, []);
-
-
+class Charity {
+    constructor(name, cause, rating) {
+        this.name = name;
+        this.cause = cause;
+        this.rating = rating;
+    }
+}
 
 const Recommended = () => {
     
@@ -141,4 +134,4 @@ const Recommended = () => {
     
 }
 
-
+export default Recommended
