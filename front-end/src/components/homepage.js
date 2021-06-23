@@ -30,7 +30,7 @@ const Homepage = ({ setData, data }) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:3001/api", { "search": input});
-      setApi(response.data);
+      setData(response.data);
     } catch (error) {
       console.error(error);
     }

@@ -23,7 +23,7 @@ const speedLimiter = slowDown({
 let cachedData;
 let cachedTime;
 
-let baseURL = `https://api.data.charitynavigator.org/v2/Organizations?`
+let baseURL = `https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&`
 
 router.post('/', limiter, speedLimiter, async (req, res)=>{
   // in memory cache so refreshing wont count as a hit
@@ -32,38 +32,27 @@ router.post('/', limiter, speedLimiter, async (req, res)=>{
     }
    try{
     let search = req.body.search
-    const param1 = new URLSearchParams({
-      app_id: process.env.API_ID,
-      app_key: process.env.API_KEY,
-      search: `${search}`,
-      categoryID: 1
-  
-    })
-    const param2 = new URLSearchParams({
-      app_id: process.env.API_ID,
-      app_key: process.env.API_KEY,
-      search: 'Animals',
-      rated: true,
-      sort: 'RATING%3ADESC'
-    })
-
+    let param
 
     if (req.body.search){
-      const { data }= await axios.get(`${baseURL}${param1}`)
-      cachedData = data
-      cachedTime = Date.now()
-      data.cachedTime = cachedTime
-      console.log(cachedTime)
-      return res.json(data)
-      
+      param = new URLSearchParams({
+        search: `${search}`,
+        categoryID: 1
+      })
     }else if(!req.body.search){
-      const { data }= await axios.get(`${baseURL}${param2}`)
-      cachedData = data
-      cachedTime = Date.now()
-      data.cachedTime = cachedTime
-      console.log(cachedTime)
-      return res.json(data)
+      param = new URLSearchParams({
+        search: 'Animals',
+        rated: true,
+        sort: 'RATING%3ADESC'
+      })
     }
+    
+    const { data } = await axios.get(`${baseURL}${param}`)
+    cachedData = data
+    cachedTime = Date.now()
+    data.cachedTime = cachedTime
+    console.log(cachedTime)
+    return res.json(data)
     
    }catch (err) {
     console.log(err)
