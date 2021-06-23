@@ -7,6 +7,7 @@ import Homepage from "./components/homepage";
 import Recommended from "./components/recommended";
 import Register from "./components/register";
 import Account from "./components/account";
+import Results from "./components/results";
 import Login from "./components/login";
 
 const StyledWrapper = styled.div`
@@ -22,6 +23,7 @@ const App = () => {
   const [randomImg, setRandomImg] = useState("");
   const [randomImgSrc, setRandomImgSrc] = useState("");
   const [changed, setChanged] = useState(false);
+  const [data, setData] = useState([]);
 
   const getRandomImg = () => { 
     //gets all the images from the folder images and puts them into an object as a key value pair. 
@@ -92,8 +94,11 @@ const App = () => {
             <Route path="/register">
               <Register />
             </Route>
+            <Route path="/search">
+              <Results />
+            </Route>
             <Route path="/">
-              <Homepage />
+              <Homepage setData={setData} data={data} />
             </Route>
           </Switch>
         </Router>
