@@ -13,7 +13,7 @@ import Login from "./components/login";
 const StyledWrapper = styled.div`
   display: flex; 
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   background: url(${props => props.img}) no-repeat center bottom fixed;
   background-size: cover;
 `
@@ -24,6 +24,7 @@ const App = () => {
   const [randomImgSrc, setRandomImgSrc] = useState("");
   const [changed, setChanged] = useState(false);
   const [data, setData] = useState([]);
+  const [searched, setSearched] = useState("");
 
   const getRandomImg = () => { 
     //gets all the images from the folder images and puts them into an object as a key value pair. 
@@ -95,10 +96,10 @@ const App = () => {
               <Register />
             </Route>
             <Route path="/search">
-              <Results />
+              <Results user={user} data={data} searched={searched} />
             </Route>
             <Route path="/">
-              <Homepage setData={setData} data={data} />
+              <Homepage setData={setData} data={data} setSearched={setSearched} />
             </Route>
           </Switch>
         </Router>
