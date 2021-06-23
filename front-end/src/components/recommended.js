@@ -41,7 +41,7 @@ const Recommended = () => {
     let charity5 = new Charity("Diane Fossey Gorilla Fund International", "wildlife conservation", 4);
     let charity6 = new Charity("The Elephant Sanctuary", "wildlife conservation", 4);
     let charity7 = new Charity("Polar Bears International", "wildlife conservation", 4);
-    let charity8 = new Charity("friends of the sea otter", "wildlife santuary", null);
+    let charity8 = new Charity("International Otter Survival Fund", "wildlife conservation", null);
     
     return (
         <div className="recommend_layout">
@@ -117,8 +117,8 @@ const Recommended = () => {
             </a>
             </div>
             <div className="upper_and_lower_boxes">
-            <a href = "https://www.facebook.com/friendsoftheseaotter/">
-                <img src="https://cosmosmagazine.com/wp-content/uploads/2020/02/190624_sea_otters_full-1440x863.jpg" />
+            <a href = "https://www.otter.org/Public/Default.aspx">
+                <img src="https://www.nature.scot/sites/default/files/styles/hero_banner_half_width/public/2017-07/Otter-01v2.jpg?itok=WcsIZM11" />
                 <div className="textbox">
                     <p>{charity8.name}</p>
                     <p>{charity8.cause}</p>
