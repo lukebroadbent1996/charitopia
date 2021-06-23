@@ -8,7 +8,7 @@ import animals from "../utils/animals.json";
 const Homepage = () => {
   const [input, setInput] = useState("");
   const [display, setDisplay] = useState(false);
-  const [api, setApi] = useState({});
+  const [api, setApi] = useState([]);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -28,12 +28,14 @@ const Homepage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api", { "search": input});
+      const response = await axios.post("http://localhost:3001/api", {"search": input});
       setApi(response.data);
     } catch (error) {
       console.error(error);
     }
   }
+
+  console.log(api)
 
   return (
     <div className="container-homepage">
