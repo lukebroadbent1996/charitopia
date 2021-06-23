@@ -27,13 +27,13 @@ const Homepage = ({ setData, data }) => {
   }
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   const response = await axios.post("http://localhost:3001/api", { "search": input});
-    //   setApi(response.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3001/api", { "search": input});
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   if (data[0]) return <Redirect to="/search"/>
