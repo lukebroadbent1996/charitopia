@@ -4,11 +4,12 @@ import { BiSearchAlt2 as SearchSymbol } from "react-icons/bi";
 import "../styles/homepage.css";
 
 import animals from "../utils/animals.json";
+import { Redirect } from "react-router-dom";
 
-const Homepage = () => {
+const Homepage = ({ setData, data }) => {
   const [input, setInput] = useState("");
   const [display, setDisplay] = useState(false);
-  const [api, setApi] = useState([]);
+
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -28,14 +29,15 @@ const Homepage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api", {"search": input});
-      setApi(response.data);
+      const response = await axios.post("http://localhost:3001/api", { "search": input});
+      setData(response.data);
+
     } catch (error) {
       console.error(error);
     }
   }
 
-  console.log(api)
+  if (data[0]) return <Redirect to="/search"/>
 
   return (
     <div className="container-homepage">
